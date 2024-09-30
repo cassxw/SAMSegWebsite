@@ -129,6 +129,7 @@
 
 		a:hover {
 			border-bottom-color: transparent;
+			text-decoration: underline; /* <== */
 		}
 
 	strong, b {
@@ -3260,7 +3261,44 @@
 		padding: 4em 0 6em 0;
 		text-align: center;
 	}
+		/* <== */
+		#footer .author-supervisor-container {
+			display: flex;
+			justify-content: space-between;
+			gap: 0em; /* Adjust space between columns */
+		}
 
+		@media (max-width: 768px) {
+			#footer .author-supervisor-container {
+				flex-direction: column; /* Stack columns on small screens */
+			}
+		}
+	
+			#footer .authors, .supervisors {
+				flex: 1; /* Ensure both columns take equal space */
+			}
+
+		#footer h3 {
+			margin-bottom: 1em;
+		}
+
+		#footer p {
+			margin: 0;
+		}
+
+		#footer ul {
+			list-style-type: none; /* Remove bullets */
+    		padding-left: 0; /* Remove left padding */
+		}
+
+		#footer .university-info {
+			list-style-type: none;
+			padding: 0;
+			text-align: center;
+			margin-top: 0.5em;
+		}
+		/* <== */
+	
 		#footer .icons a {
 			-moz-transition: opacity 0.2s ease-in-out;
 			-webkit-transition: opacity 0.2s ease-in-out;
@@ -3290,6 +3328,7 @@
 				border-left: solid 1px #dddddd;
 				display: inline-block;
 				list-style: none;
+				list-style-type: none; /* <== */
 				margin-left: 1em;
 				padding-left: 1em;
 			}
