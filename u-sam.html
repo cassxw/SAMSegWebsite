@@ -38,42 +38,125 @@
 			<!-- Main -->
 				<section id="main" class="container">
 					<header>
-						<h2>U-SAM for Brain MRI</h2>
+						<h2><strong>U-SAM for Brain MRI</strong></h2>
 						<h3>A Hybrid Approach for Intracranial Meningioma Segmentation with SAM and U-Net</h3>
+						
+						<!-- <nav class="nav">
+							<a href="#introduction" class="button">Introduction</a>
+							<a href="#design" class="button">Design</a>
+							<a href="#results" class="button">Results</a>
+							<a href="#conclusion" class="button">Conclusion</a>
+						</nav> -->
+
+						<p><i>By Cassandra Wallace</i></p>
 					</header>
 
-					<div class="box">
-						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
-						
-						<h3>Introduction and Project Goals</h3>
-						<p>overview</p>
-						<p>research question/goals + aim</p>
-						<p>hybrid idea with 2 brains working together</p>
-						<p>Cep risus aliquam gravida cep ut lacus amet. Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae ante vestibulum ante. Blandit. Ante accumsan nisi eu placerat gravida placerat adipiscing in risus fusce vitae ac mi accumsan nunc in accumsan tempor blandit aliquet aliquet lobortis. Ultricies blandit lobortis praesent turpis. Adipiscing accumsan adipiscing adipiscing ac lacinia cep. Orci blandit a iaculis adipiscing ac. Vivamus ornare laoreet odio vis praesent nunc lorem mi. Erat. Tempus sem faucibus ac id. Vis in blandit. Nascetur ultricies blandit ac. Arcu aliquam. Accumsan mi eget adipiscing nulla. Non vestibulum ac interdum condimentum semper commodo massa arcu.</p>
-						<div class="row">
+					<div id="introduction" class="box">
+						<!-- <span class="image featured"><img src="images/pic01.jpg" alt="" /></span> -->
+						<h2><strong>Introduction and Project Goals</strong></h2>
+						<p>Welcome to U-SAM, a hybrid approach to medical image segmentation. Our innovative framework, U-SAM, synergises the powerful capabilities of the Segment Anything Model (SAM) with the precision of U-Net architectures. This unique combination is driven by our research question:</p>
+						<blockquote>Can the integration of U-Net with SAM improve accuracy in intracranial meningioma segmentation for brain MRI, relative to Vanilla SAM on the same task?</blockquote>
+						<p>At the heart of U-SAM lies the philosophy of "two brains working together." By leveraging SAM's general segmentation prowess alongside U-Net's specialisation in capturing intricate spatial details, we aim to create a more robust solution for medical image analysis. This collaboration not only seeks to harness the individual strengths of both models but also addresses the inherent limitations each faces when applied to challenging medical imaging scenarios.</p>
+						<p>Our project embodies the vision of advancing medical diagnostics through improved segmentation accuracy, thereby enhancing clinical decision-making and patient outcomes. With U-SAM, we aspire to push the boundaries of what's possible in medical image analysis and provide an effective tool for researchers and practitioners alike.</p>
+					</div>
 
-							<div class="row-6 row-12-mobilep">
-								<h3>Design and Implementation</h3>
-								<p>U-SAM-Combo with framework pic and combo methods</p>
-								<p>U1-SAM2 with framework pic and mask_input description</p>
-								<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
-							</div>
+					<div id="design" class="box">
+						<h2><strong>Design and Implementation</strong></h2>
 
-							<div class="row-6 row-12-mobilep">
-								<h3>Results and Discussion</h3>
-								<p>U-Net training</p>
-								<p>U-SAM-Combo results (table)</p>
-								<p>U1-SAM2 results (table)</p>
-								<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
-							</div>
+						<h3>U-Net Architecture</h3>
+						<p>Our U-Net architecture is inspired by the Optimised U-Net proposed by Futrega et al. (NVIDIA), which introduces deep supervision through additional decoder levels closer to the output. This enhancement improves gradient flow, significantly boosting segmentation accuracy. 
+						</p>
+						<p>While the SAM model operates on a slice-by-slice basis, U-Net processes full 3D volumes, leveraging the spatial context inherent in entire datasets. Unlike SAM, which provides consistent outputs for identical inputs, U-Net's predictions can exhibit variability, showcasing its adaptability. We trained U-Net with the same hyperparameters and loss function strategy as SAM, ensuring a fair comparison. Notably, during U-Net training, all parameters were updated, as opposed to the limited fine-tuning applied to SAM's mask decoder.
+						</p>
+						<p>To ensure an equitable comparison between these models, we adjusted the U-Net segmentation process to account for the start and end points of the tumour volume within the axial plane. This emulation of SAM's bounding box prompt allows for a more balanced evaluation. Future research could explore the potential benefits of incorporating bounding boxes into U-Net's input channels, enhancing its performance further.
+						</p>
 
-							<div class="row-6 row-12-mobilep">
-								<h3>Conclusion and Future Work</h3>
-								<p>same as paper</p>
-								<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
-							</div>
+						<h3>U-SAM-Combo</h3>
+						<p>The U-SAM-Combo architecture harnesses the complementary strengths of PEFT-SAM and U-Net. In this framework, the input MRI is independently processed by both models, with their binary mask outputs merged to produce the final segmentation mask. We explored three innovative combination strategies:
+						</p>
+						<ul>
+							<li><strong>Union:</strong> This strategy aggregates predictions from both models, maximising coverage by simply merging the results.</li>
+							<li><strong>Intersection:</strong> By focusing exclusively on regions where both models agree, this attempted to ensure precise segmentation outcomes.</li>
+							<li><strong>Weighted:</strong> This method balances the predictions based on a preliminary accuracy evaluation of each model's performance against the ground truth segmentation mask. This research-focused approach emphasises the strengths of both frameworks, but currently lacks immediate clinical applicability due to the intermediate evaluation.</li>
+						</ul>
+						<!-- Insert U-SAM-Combo framework image here -->
+
+						<h3>U1-SAM2</h3>
+						<p>U1-SAM2 presents an innovative integration of U-Net and SAM, where U-Net's output serves as a guidance mask for SAM's segmentation process. This sequential approach begins with processing the MRI through U-Net, generating an initial prediction that informs the subsequent segmentation decisions of PEFT-SAM.
+						</p>
+						<p>By incorporating U-Net's spatial understanding, U1-SAM2 refines SAM's segmentation capabilities, resulting in a more accurate final prediction. This is achieved through the utilisation of SAM's <code>mask_input</code> parameter in its prediction method. Despite being under-documented, this feature was pivotal for merging U-Net's output with SAM's processes. 
+						</p>
+						<p>Importantly, SAM expects input masks containing unthresholded logits (floating-point confidence values) rather than binary outputs. To facilitate this seamless integration, we adapted tools from MicroSAM to convert U-Net's binary outputs into compatible logits, ensuring a smooth workflow between the two models.
+						</p>
+						<!-- Insert U1-SAM2 framework image here -->
+					</div>
+
+					<div id="results" class="box">
+						<h2><strong>Results and Discussion</strong></h2>
+						<h3>U-Net Training</h3>
+						<p>The initial training of the U-Net model yielded a Dice Similarity Coefficient (DSC) of <strong>60%</strong>. Through a series of refinements involving adjustments in hyperparameters, loss functions, and data augmentations, we successfully improved the DSC to <strong>83.5%</strong>. These results demonstrate U-Net's ability to adapt to the complexities of medical imaging data, especially in handling 3D MRI volumes. The model was particularly effective in accurately delineating tumour boundaries in certain MRI modalities, but some difficulties arose in distinguishing the less visible tumour regions. As part of future work, incorporating more diverse and augmented datasets could further enhance U-Net's generalisation across various imaging conditions.</p>
+
+						<h3>U-SAM-Combo Results</h3>
+						<p>The U-SAM-Combo approach, which integrates U-Net and SAM predictions, was tested with three different combination strategies: union, intersection, and a weighted approach. The union method aggregates predictions from both models, aiming for a broader tumour coverage. It achieved an accuracy of <strong>88.6%</strong>, improving upon both models but with some trade-offs in precision. The intersection method, which focused on the areas where both models agreed, performed slightly lower with an <strong>82.6%</strong> accuracy. The best results were seen with the weighted approach, where predictions were balanced based on each model's performance, achieving a remarkable <strong>91.8%</strong> accuracy. This demonstrates that leveraging the strengths of both U-Net and SAM in a hybrid manner can significantly boost overall accuracy, especially when individual predictions complement each other in terms of tumour delineation.</p>
+
+						<h3>U1-SAM2 Results</h3>
+						<p>Our experimentation with U1-SAM2, a novel iteration of U-SAM that incorporated different architectural tweaks, provided further insights. The model produced an overall DSC of <strong>85.1%</strong>, which represents a modest gain over the baseline models. However, the approach still fell short compared to the combined methods outlined earlier. We observed that while U1-SAM2 offered reliable tumour segmentation across multiple modalities, its performance varied depending on the complexity and visibility of the tumour region, especially in scans like T2w, where tumour contrast was not as pronounced. These results suggest that more nuanced strategies might be necessary to ensure consistently high performance across all MRI modalities.</p>
+
+						<h3>Overall Results</h3>
+						<p>Below is a comparative table of the DSC scores achieved by the different models and strategies employed during the project. The table also includes the percentage improvement or decline in accuracy compared to PEFT-SAM and Vanilla SAM, which serve as the primary baselines for this study.</p>
+
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+										<th><strong>Model</strong></th>
+										<th><strong>Accuracy (DSC)</strong></th>
+										<th><strong>Change from PEFT-SAM</strong></th>
+										<th><strong>Change from Vanilla SAM</strong></th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td>U-SAM-Combo (Union)</td>
+										<td>88.6%</td>
+										<td>0.9%</td>
+										<td>4.5%</td>
+									</tr>
+									<tr>
+										<td>U-SAM-Combo (Intersection)</td>
+										<td>82.6%</td>
+										<td>-5.1%</td>
+										<td>-1.5%</td>
+									</tr>
+									<tr>
+										<td>U-SAM-Combo (Weighted)</td>
+										<td><strong>91.8%</strong></td>
+										<td><strong>4.1%</strong></td>
+										<td><strong>7.7%</strong></td>
+									</tr>
+									<tr></tr>
+										<td>U1-SAM2</td>
+										<td>85.1%</td>
+										<td>-2.6%</td>
+										<td>1.0%</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
+
+					<div id="conclusion" class="box">
+						<h2><strong>Conclusion and Future Work</strong></h2>
+						<p>U-SAM represents a key advancement in medical image segmentation, particularly for intracranial meningiomas. Our U-SAM-Combo approach, especially the Weighted strategy, demonstrated the most substantial improvement, achieving a <strong>7.7%</strong> increase in Dice Score over Vanilla SAM, while the Union method improved by <strong>4.5%</strong>. However, it's important to note that the Weighted method's reliance on intermediate evaluations with ground truth limits its practical application.</p>
+					
+						<p>In contrast, U1-SAM2 provided only a <strong>1%</strong> improvement over Vanilla SAM and underperformed compared to PEFT-SAM. Moreover, it introduced spurious pixels, highlighting the need for further refinement.</p>
+
+						<p>Although Vanilla SAM already achieved good performance, even with our modifications, U-SAM still falls short of the near-perfect accuracy required for clinical applications. Nonetheless, our research goal was met: U-SAM successfully improved upon Vanilla SAM for intracranial meningioma segmentation. In conclusion, U-SAM shows potential for advancing medical imaging, but further refinement is needed to reach clinical-grade precision. Future work will focus on optimising these hybrid models for broader application and greater accuracy.</p>
+						
+						<p>Future research could focus on exploring new prompting methods, such as point-based or text-based inputs, to improve accuracy. Additionally, reversing the current approach in U2-SAM1, where SAM's predictions guide U-Net's segmentation, could lead to further enhancements. Broader applications of U-SAM in other medical imaging tasks, including organ segmentation and tumor detection, will also be investigated. Finally, with the release of SAM-2 in July 2024, which promises improved segmentation, its impact on U-SAM's performance will be assessed in future iterations.</p>
+					</div>					
+
 				</section>
 
 			<!-- Footer -->
