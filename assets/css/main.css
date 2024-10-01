@@ -2634,7 +2634,7 @@
 					-webkit-flex-shrink: 1;
 					-ms-flex-shrink: 1;
 					flex-shrink: 1;
-					padding: 1em 0 0 0;
+					/* padding: 1em 0 0 0; */
 					text-align: center;
 					width: 100%;
 				}
@@ -3099,6 +3099,18 @@
 					background-color: rgba(255, 255, 255, 0.2);
 				}
 
+	.del.dropdown {
+		position: relative; /* Needed for absolute positioning of dropdown */
+	}
+
+		.del.dropdown p {
+			margin-bottom: 0.5em;
+		}
+
+		.del.dropdown li {
+			padding: 0;
+		}
+
 	.dropotron {
 		background: #fff;
 		border-radius: 6px;
@@ -3108,6 +3120,12 @@
 		padding: 0.5em 0;
 		width: 11em;
 	}
+
+		.del.dropdown ul {
+			width: 100%;
+			margin-top: 0;
+			padding: 0;
+		}
 
 		.dropotron li {
 			padding: 0;
