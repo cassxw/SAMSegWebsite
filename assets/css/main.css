@@ -3953,3 +3953,70 @@
 			}
 
 	}
+
+/* <== */
+.content-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    gap: 10px; /* Small gap between text and image */
+}
+
+.text-content {
+    flex: 1 1 auto;
+    margin-right: 10px; /* Small gap from the image */
+}
+
+.image-content {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-content img {
+    max-width: 275px; /* Limits the maximum width for portrait scaling */
+    height: auto; /* Keeps the aspect ratio */
+}
+
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column;
+        align-items: center; /* Ensure the container itself centers content */
+		gap: 0px;
+    }
+
+    .image-content {
+        width: 100%; /* Ensures the image container takes full width */
+        justify-content: center; /* Centers the image inside the container */
+        display: flex;
+    }
+
+    .image-content img {
+        margin: 0 auto; /* Ensures the image is centered horizontally */
+		width: 50%;
+		min-width: 200px;
+    }
+}
+
+.documentation-box {
+    text-align: center; /* Center text and buttons */
+    margin: 20px auto; /* Center the box itself */
+    padding: 20px; /* Add some padding */ */
+    max-width: 400px; /* Limit width of the box */
+}
+
+.documentation-box ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: center; /* Center the buttons */
+}
+
+.documentation-box li {
+    margin: 0 10px; /* Space between buttons */
+}
+
+/* <== */
