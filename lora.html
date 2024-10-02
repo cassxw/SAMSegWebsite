@@ -15,102 +15,115 @@
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<!-- Header -->
-				<header id="header">
-					<h1><a href="index.html">SAMSeg</a> Honour's Research Project</h1>
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html" class="button">Home</a></li>
-							<li>
-								<a href="#" class="icon solid fa-angle-down button">Sections</a>
-								<ul>
-									<li><a href="u-sam.html">U-SAM</a></li>
-									<li><a href="lora.html">LoRA</a></li>
-									<!-- <li><a href="deliverables.html">Deliverables</a></li>
-									<li><a href="contact.html">Contact Us</a></li>
-									<li><a href="generic.html">Generic</a></li>
-									<li><a href="elements.html">Elements</a></li> -->
-									<!-- <li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li> -->
-								</ul>
-							</li>
-							<!-- <li><a href="#" class="button">Sign Up</a></li> -->
-						</ul>
-					</nav>
-				</header>
+			<header id="header">
+				<h1><a href="index.html">SAMSeg</a> Honour's Research Project</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html" class="button">Home</a></li>
+						<li>
+							<a href="#" class="icon solid fa-angle-down button">Projects</a>
+							<ul>
+								<li><a href="u-sam.html">U-SAM</a></li>
+								<li><a href="lora.html">LoRA</a></li>
+								<!-- <li><a href="deliverables.html">Deliverables</a></li> -->									
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</header>
 
 			<!-- Main -->
-				<section id="main" class="container">
-					<header>
-						<h2>LoRA</h2>
-						<p>A generic page for every non-generic situation.</p>
-					</header>
-					<div class="box">
-						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
-						<h3>This is a subheading</h3>
-						<p>Cep risus aliquam gravida cep ut lacus amet. Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae ante vestibulum ante. Blandit. Ante accumsan nisi eu placerat gravida placerat adipiscing in risus fusce vitae ac mi accumsan nunc in accumsan tempor blandit aliquet aliquet lobortis. Ultricies blandit lobortis praesent turpis. Adipiscing accumsan adipiscing adipiscing ac lacinia cep. Orci blandit a iaculis adipiscing ac. Vivamus ornare laoreet odio vis praesent nunc lorem mi. Erat. Tempus sem faucibus ac id. Vis in blandit. Nascetur ultricies blandit ac. Arcu aliquam. Accumsan mi eget adipiscing nulla. Non vestibulum ac interdum condimentum semper commodo massa arcu.</p>
-						<div class="row">
-							<div class="row-6 row-12-mobilep">
-								<h3>And now a subheading</h3>
-								<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
-							</div>
-							<div class="row-6 row-12-mobilep">
-								<h3>And another subheading</h3>
-								<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
-							</div>
-						</div>
-					</div>
-				</section>
+			<section id="main" class="container">
+				<header>
+					<h2><strong>SAMSeg-LoRA</strong></h2>
+					<h3>Fine Tuning SAM Through Low Rank Adaptation</h3>
+					<p><i>By Tapera Chikumbu</i></p>
+				</header>
+				<div class="box">
+					<h2><strong>Introduction</strong></h2>
+					<p>
+						This research aimed to investigate how implementing Low-Rank Adaptation (LoRA) alters the performance of SAM on segmentation of intracranial meningiomas in brain MRIs, compared to the baseline SAM performance.
+						LoRA adds trainable layers parallel to existing model parameters, potentially enhancing performance without increasing inference latency.
+						Our modified SAM that implements LoRA was dubbed <i>SAMSEG-LoRA</i>. 
+						Such an approach was particularly significant as it offered a way to adapt large, pre-trained models like SAM to specialized tasks without the computational cost of full fine-tuning.
+					</p>
+				</div>
+				<div class="box">
+					<h2><strong>Design and Implementation</strong></h2>
+					<p>
+						LoRA layers were added to SAM's image encoder, keeping pre-trained parameters frozen while fine-tuning the new adapter layers.
+						Various preprocessing techniques, including image slicing, centre cropping, and pixel value rescaling were implemented.
+						The modified SAM was trained using the Adam optimizer, with performance evaluated using Dice scores and a combined Dice-Cross Entropy loss function.
+					</p>
+				</div>
+				<div class="box">
+					<h2><strong>Results and Discussion</strong></h2>
+					<p>
+						The experiments compared the performance of SAM with different LoRA configurations (ranks 64, 128, and 256).
+						LoRA_64 showed the lowest average losses, but all configurations displayed some unexpected patterns in training loss.
+						A deeper analysis of LoRA_64 over 50 epochs showed initial improvements in both training and validation losses, followed by increasing losses after the 34th epoch.
+						Dice score comparisons between the original SAM and LoRA-modified versions were inconclusive, with the LoRA models showing deteriorated performance.
+					</p>
+				</div>
+				<div class="box">
+					<h2><strong>Conclusion</strong></h2>
+					<p>
+						The study demonstrates that SAM modified with LoRA adapters can be trained for improved performance on tumor segmentation.
+						However, reliable performance comparisons between the original SAM and LoRA-modified versions could not be established.
+						Further experimentation with different adapter ranks and finer hyper-parameter tuning is needed to shed more light on the effectiveness of this approach for medical image segmentation.
+					</p>
+				</div>
+				<div class="box">
+					<h2><strong>Documentation</strong></h2>
+					<ul>
+						<li><a href="deliverables/SAMSeg - Literature Review - CHKTAP011.pdf" target="_blank">Literature Review</a></li>
+						<li><a href="deliverables/SAMSeg - SAMSEG-LoRA Final Paper.pdf" target="_blank">Final Paper</a></li>
+					</ul>
+				</div>
+			</section>
 
 			<!-- Footer -->
-				<footer id="footer">
-					<div class="footer-content">
-						<h3><strong>SAMSeg:</strong> Improving SAM for Brain Tumour Segmentation</h3>
-						
-						<!-- Authors and Supervisors in Two Columns -->
-						<div class="author-supervisor-container">
-							<div class="authors">
-								<p><strong>Authors:</strong></p>
-								<ul>
-									<li>Tapera Chikumbu - <a href="mailto:chktap011@myuct.ac.za">chktap011@myuct.ac.za</a></li>
-									<li>Cassandra Wallace - <a href="mailto:wllcas004@myuct.ac.za">wllcas004@myuct.ac.za</a></li>
-								</ul>
-							</div>
-							
-							<div class="supervisors">
-								<p><strong>Supervisors:</strong></p>
-								<ul>
-									<li>Patrick Marais - <a href="mailto:patrick@cs.uct.ac.za">patrick@cs.uct.ac.za</a></li>
-									<li>Fred Nicolls - <a href="mailto:fred.nicolls@uct.ac.za">fred.nicolls@uct.ac.za</a></li>
-								</ul>
-							</div>
+			<footer id="footer">
+				<div class="footer-content">
+					<h3><strong>SAMSeg:</strong> Improving SAM for Brain Tumour Segmentation</h3>
+					
+					<!-- Authors and Supervisors in Two Columns -->
+					<div class="author-supervisor-container">
+						<div class="authors">
+							<p><strong>Authors:</strong></p>
+							<ul>
+								<li>Tapera Chikumbu - <a href="mailto:chktap011@myuct.ac.za">chktap011@myuct.ac.za</a></li>
+								<li>Cassandra Wallace - <a href="mailto:wllcas004@myuct.ac.za">wllcas004@myuct.ac.za</a></li>
+							</ul>
 						</div>
 						
-						<!-- UCT Crest Section -->
-						<div class="uct-crest">
-							<img src="images/uct_logo.png" alt="UCT Crest" style="width: 100px; height: auto;">
+						<div class="supervisors">
+							<p><strong>Supervisors:</strong></p>
+							<ul>
+								<li>Patrick Marais - <a href="mailto:patrick@cs.uct.ac.za">patrick@cs.uct.ac.za</a></li>
+								<li>Fred Nicolls - <a href="mailto:fred.nicolls@uct.ac.za">fred.nicolls@uct.ac.za</a></li>
+							</ul>
 						</div>
-						
-						<!-- University Info -->
-						<ul class="university-info">
-							<li>&copy; 2024, University of Cape Town, Computer Science Department</li>
-							<li>Rondebosch, Cape Town, 7701, South Africa</li>
-							<li>All Rights Reserved.</li>
-						</ul>
-
-						<!-- Copyright and Design Credits -->
-						<ul class="copyright">
-							<li>Design by <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
 					</div>
-				</footer>
+					
+					<!-- UCT Crest Section -->
+					<div class="uct-crest">
+						<img src="images/uct_logo.png" alt="UCT Crest" style="width: 100px; height: auto;">
+					</div>
+					
+					<!-- University Info -->
+					<ul class="university-info">
+						<li>&copy; 2024, University of Cape Town, Computer Science Department</li>
+						<li>Rondebosch, Cape Town, 7701, South Africa</li>
+						<li>All Rights Reserved.</li>
+					</ul>
+
+					<!-- Copyright and Design Credits -->
+					<ul class="copyright">
+						<li>Design by <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
 
 		</div>
 
