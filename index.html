@@ -25,22 +25,8 @@
 								<ul>
 									<li><a href="u-sam.html">U-SAM</a></li>
 									<li><a href="lora.html">LoRA</a></li>
-									<!-- <li><a href="deliverables.html">Deliverables</a></li>
-									<li><a href="contact.html">Contact Us</a></li>
-									<li><a href="generic.html">Generic</a></li>
-									<li><a href="elements.html">Elements</a></li> -->
-									<!-- <li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li> -->
 								</ul>
 							</li>
-							<!-- <li><a href="#" class="button">Sign Up</a></li> -->
 						</ul>
 					</nav>
 				</header>
@@ -62,14 +48,15 @@
 					<section class="box special">
 						<header class="major">
 							<h2>Overview</h2>
-							<p>The Segment Anything Model (SAM) is a state-of-the-art, promptable deep
+							<p>The <em>Segment Anything Model (SAM)</em> is a state-of-the-art, promptable deep
 								learning model that excels in 2D natural image segmentation. However,
 								medical imaging, especially brain tumour segmentation, presents unique
-								challenges due to the complexity of tumour boundaries and the multidimensionality of data. This project aims to enhance SAM's capability for
+								challenges due to the complexity of tumour boundaries and the multidimensionality of data.
+								This project aims to enhance SAM's capability for
 								brain tumour segmentation through Parameter-Efficient Fine-Tuning
 								(PEFT) on the BraTS Intracranial Meningioma 2023 dataset. In addition,
 								we introduce two framework modifications to augment SAM's performance:
-								U-SAM and LoRA.</p>
+								<strong>U-SAM</strong> and <strong>LoRA</strong>.</p>
 						</header>
 						<!-- <span class="image featured"><img src="images/pic01.jpg" alt="" /></span> -->
 					</section>
@@ -78,10 +65,30 @@
 						<div class="row.aln-middle">
 							<section>
 								<span class="icon solid major fa-bolt accent2"></span>
-								<h3>Benchmarking</h3>
-								<p>The baseline - Vanilla SAM - demonstrated strong performance for tumour segmentation - 84.1%.
-									Using bounding box prompts, we fine-tuned SAM on the BraTS dataset, achieving 87.7% (+3.6%)
-									PEFT-SAM sets the stage for our architectural modifications.</p>
+								<h3>Benchmarking: Vanilla and PEFT-SAM</h3>
+
+								<p>Our project began with establishing a strong foundation using the baseline model, Vanilla SAM, 
+									which delivered commendable results for tumour segmentation. Starting with <strong>84.1%</strong> accuracy, 
+									Vanilla SAM demonstrated its capability in identifying tumour regions effectively.</p>
+								
+								<p>A lot of our design decisions were justified by existing efforts in the Medical SAM community,
+									such as using bounding boxes and slicing the 3D MRI volume into 2D slices to be processed by SAM.
+									We also performed various preprocessing steps standard in medical imaging, such as Z-Score normalisation
+									and rescaling, to ensure standardized intensities across samples.</p>
+
+								<p>For our PEFT-SAM (Parameter-Efficient Fine-Tuning) approach, PEFT refers to training only the mask decoder
+									while freezing all other SAM modules, a common strategy from our research. To train PEFT-SAM on the BraTS data,
+									we used a Weighted Combination of Mean Squared Error and Cross Entropy loss functions, along with the Adam Optimizer.
+									Additionally, we applied Optuna hyperparameter tuning to optimize the number of epochs, samples per epoch, and
+									other parameters, alongside an exponentially decaying learning rate schedule.
+									Our training allowed us to expose SAM to the intricacies of the brain MRIs and the complexity of the tumours,
+									ultimately improving the accuracy to <strong>87.7%</strong> — a notable increase of <strong>3.6%</strong> from our Vanilla SAM.</p>
+
+								<p>PEFT-SAM builds upon the strong foundation laid by Vanilla SAM, focusing on the key challenge of tumour segmentation and refining
+									the model's interaction with prompts. This approach provided a flexible yet precise method, setting the stage for more complex architectural
+									modifications with our proposed models, <strong>U-SAM</strong> and <strong>LoRA</strong>. PEFT-SAM, along with Vanilla SAM, will serve as the baseline for comparison
+									against these modified models.</p>
+								
 							</section>
 						</div>
 					</section>
@@ -90,13 +97,13 @@
 							<section>
 								<span class="icon solid major fa-cloud accent4"></span>
 								<h3>U-SAM</h3>
-								<p>A hybrid model that integrates SAM with U-Net's superior 3D spatial capabilities for better tumour boundary precision.</p>
+								<p>A hybrid model that integrates SAM with U-Net's superior 3D spatial capabilities for improved tumour boundary precision.</p>
 								<a href="u-sam.html" class="button primary">Learn More</a>
 							</section>
 							<section>
 								<span class="icon solid major fa-lock accent5"></span>
 								<h3>SAM-LoRA</h3>
-								<p>An investigation on applying LoRA to SAM\'s image encoder affects segmentation accuracy.</p>
+								<p>An investigation on applying LoRA to SAM's image encoder affects segmentation accuracy.</p>
 								<a href="lora.html" class="button primary">Learn More</a>
 							</section>
 						</div>
@@ -136,41 +143,10 @@
 							</section>
 
 						</div>
-						<!--<div class="col-6 col-12-narrower">
 
-							<section class="box special">
-								<span class="image featured"><img src="images/pic03.jpg" alt="" /></span>
-								<h3>Accumsan integer</h3>
-								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
-								<ul class="actions special">
-									<li><a href="#" class="button alt">Learn More</a></li>
-								</ul>
-							</section>
-
-						</div> -->
 					</div>
 
 				</section>
-
-			<!-- CTA 
-				<section id="cta">
-
-					<h2>Sign up for beta access</h2>
-					<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc.</p>
-
-					<form>
-						<div class="row gtr-50 gtr-uniform">
-							<div class="col-8 col-12-mobilep">
-								<input type="email" name="email" id="email" placeholder="Email Address" />
-							</div>
-							<div class="col-4 col-12-mobilep">
-								<input type="submit" value="Sign Up" class="fit" />
-							</div>
-						</div>
-					</form>
-
-				</section>
-			-->
 
 			<!-- Footer -->
 				<footer id="footer">
