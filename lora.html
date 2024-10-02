@@ -55,6 +55,10 @@
 						Various preprocessing techniques, including image slicing, centre cropping, and pixel value rescaling were implemented.
 						The modified SAM was trained using the Adam optimizer, with performance evaluated using Dice scores and a combined Dice-Cross Entropy loss function.
 					</p>
+					<div class="row">
+						<img src="images/LoRA_architecture.png" alt="Modified SAM Architecture with LoRA" style="width:100%; height:auto;">
+						<p><strong>Figure 1:</strong> Modified SAM Architecture with LoRA Adapters</p>
+					</div>
 				</div>
 				<div class="box">
 					<h2><strong>Results and Discussion</strong></h2>
@@ -64,6 +68,54 @@
 						A deeper analysis of LoRA_64 over 50 epochs showed initial improvements in both training and validation losses, followed by increasing losses after the 34th epoch.
 						Dice score comparisons between the original SAM and LoRA-modified versions were inconclusive, with the LoRA models showing deteriorated performance.
 					</p>
+					<p>
+						The following accuracy trends were observed during model training:
+					</p>
+					
+					<span class="image fit"><img src="images/LoRA_results/64-valid_loss.png" alt="" /></span>
+					<p><strong>Figure 2:</strong> Training and Validation Losses for LoRA-64</p>
+					<p>
+						Below are the predicted masks for LoRA-16, LoRA-32, and LoRA-64 models on sample 1100:
+					</p>
+					<div class="box alt">
+						<div class="row gtr-50 gtr-uniform">
+							<div class="col-4"><span class="image fit"><img src="images/LoRA_results/LoRA-16-mask-01100.png" alt="" /></span></div>
+							<div class="col-4"><span class="image fit"><img src="images/LoRA_results/LoRA-32-mask-01100.png" alt="" /></span></div>
+							<div class="col-4"><span class="image fit"><img src="images/LoRA_results/LoRA-64-mask-01100.png" alt="" /></span></div>
+						</div>
+					</div>
+
+					<p>
+						Reduction in training loss was not reflected in validation performance.
+						Smaller ranks offered better performance but still fell below baselines.
+						Visualisations of the predicted masks suggest the model is learning the entire image rather than tumour masks.
+					</p>
+					<table style="width:100%; border-collapse: collapse;">
+						<tr>
+							<th style="width:75%;">Model</th>
+							<th style="width:25%;">Accuracy</th>
+							<th style="width:25%;">PEFT Comparison</th>
+							<th style="width:25%;">Vanilla Comparison</th>
+						</tr>
+						<tr>
+							<td>LoRA-64</td>
+							<td>2.1%</td>
+							<td>-85.6%</td>
+							<td>-82.0%</td>
+						</tr>
+						<tr>
+							<td>LoRA-32</td>
+							<td>3.9%</td>
+							<td>-83.8%</td>
+							<td>-80.1%</td>
+						</tr>
+						<tr>
+							<td>LoRA-16</td>
+							<td>4.9%</td>
+							<td>-82.8%</td>
+							<td>-79.1%</td>
+						</tr>
+					</table>
 				</div>
 				<div class="box">
 					<h2><strong>Conclusion</strong></h2>
