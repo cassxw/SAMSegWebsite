@@ -4009,8 +4009,8 @@
 
 .documentation-box {
     text-align: center; /* Center text and buttons */
-    margin: 20px auto; /* Center the box itself */
-    padding: 20px; /* Add some padding */
+    /*margin: 20px auto; /* Center the box itself */
+    /*padding: 20px; /* Add some padding */
 }
 
 .documentation-box ul {
@@ -4022,7 +4022,26 @@
 }
 
 .documentation-box li {
-    margin: 0 10px; /* Space between buttons */
+    margin: 0px; /* Space between buttons */
 }
 
+/* Parallax section */
+.parallax {
+	/* The image used */
+	background-image: url('../../images/decoration/decoration2.jpeg');
+  
+	/* Full height */
+	height: 250px; 
+	width: 100%;
+  
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto;
+  }
+
+div#page-wrapper {
+	background-color: #90b0ba;
+}
 /* <== */
