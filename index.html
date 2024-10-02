@@ -19,7 +19,7 @@
 
 			<!-- Header -->
 				<header id="header" class="alt">
-					<h1><a href="index.html">SAMSeg</a> Honour's Research Project</h1>
+					<h1><a href="index.html">&#129504; SAMSeg</a> Honour's Research Project</h1>
 					<nav id="nav">
 						<ul>
 							<li><a href="index.html" class="button">Home</a></li>
@@ -79,6 +79,18 @@
 									We also performed various preprocessing steps standard in medical imaging, such as Z-Score normalisation
 									and rescaling, to ensure standardized intensities across samples.</p>
 
+								<p>
+									<span class="image left">
+										<img style="width: 450px; height:auto;" src="images/PEFT/classes.png" alt="">
+									</span>
+									One of the notable preprocessing steps we performed was converting the dataset's original 4-class system
+									to a simpler binary tumour segmentation. In this new system, each pixel is either classified as part of the
+									tumour or not in the model's prediction. This approach was chosen because the complexities involved in multi-class
+									tumour segmentation were outside the scope of this project due to the medical nuances. By simplifying the classification,
+									we were able to streamline the segmentation process with SAM, focusing exclusively on tumour presence versus absence,
+									which aligned with our project goals.
+								</p>
+							
 								<p>For our PEFT-SAM (Parameter-Efficient Fine-Tuning) approach, PEFT refers to training only the mask decoder
 									while freezing all other SAM modules, a common strategy from our research. To train PEFT-SAM on the BraTS data,
 									we used a Weighted Combination of Mean Squared Error and Cross Entropy loss functions, along with the Adam Optimizer.

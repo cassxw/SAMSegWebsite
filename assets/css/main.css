@@ -3959,7 +3959,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     gap: 10px; /* Small gap between text and image */
 }
 
@@ -3975,9 +3975,14 @@
     justify-content: center;
 }
 
-.image-content img {
+.image-content.arch img {
     max-width: 275px; /* Limits the maximum width for portrait scaling */
     height: auto; /* Keeps the aspect ratio */
+}
+
+.image-content.classes img {
+	max-width: 450px;
+	height: auto;
 }
 
 @media (max-width: 768px) {
@@ -3993,7 +3998,7 @@
         display: flex;
     }
 
-    .image-content img {
+    .image-content.arch img {
         margin: 0 auto; /* Ensures the image is centered horizontally */
 		width: 50%;
 		min-width: 200px;
@@ -4003,7 +4008,7 @@
 .documentation-box {
     text-align: center; /* Center text and buttons */
     margin: 20px auto; /* Center the box itself */
-    padding: 20px; /* Add some padding */ */
+    padding: 20px; /* Add some padding */
     max-width: 400px; /* Limit width of the box */
 }
 
