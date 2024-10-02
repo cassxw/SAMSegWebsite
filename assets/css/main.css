@@ -28,6 +28,8 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+
+		scroll-behavior: smooth; /* <== */
 	}
 
 	article, aside, details, figcaption, figure,
@@ -4009,7 +4011,6 @@
     text-align: center; /* Center text and buttons */
     margin: 20px auto; /* Center the box itself */
     padding: 20px; /* Add some padding */
-    max-width: 400px; /* Limit width of the box */
 }
 
 .documentation-box ul {

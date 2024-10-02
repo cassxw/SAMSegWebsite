@@ -61,7 +61,6 @@
 								we introduce two framework modifications to augment SAM's performance:
 								<strong>U-SAM</strong> and <strong>LoRA</strong>.</p>
 						</header>
-						<!-- <span class="image featured"><img src="images/pic01.jpg" alt="" /></span> -->
 					</section>
 
 					<section class="box special">
@@ -73,17 +72,23 @@
 								<p>Our project began with establishing a strong foundation using the baseline model, Vanilla SAM, 
 									which delivered commendable results for tumour segmentation. Starting with <strong>84.1%</strong> accuracy, 
 									Vanilla SAM demonstrated its capability in identifying tumour regions effectively.</p>
+
+								<span class="image">
+									<img style="width:auto; height:100px;" src="images/PEFT/samples.png" alt="Scan Type Visual">
+								</span>
 								
 								<p>A lot of our design decisions were justified by existing efforts in the Medical SAM community,
 									such as using bounding boxes and slicing the 3D MRI volume into 2D slices to be processed by SAM.
 									We also performed various preprocessing steps standard in medical imaging, such as Z-Score normalisation
-									and rescaling, to ensure standardized intensities across samples.</p>
-
+									and rescaling, to ensure standardized intensities across samples, and especially across the four scan-types per sample,
+									as seen above. These four scan-types are the sam
+								</p>
+									
 								<p>
 									<span class="image left">
-										<img style="width: 450px; height:auto;" src="images/PEFT/classes.png" alt="">
+										<img style="width: 450px; height:auto;" src="images/PEFT/classes.png" alt="Class Conversion Visual">
 									</span>
-									One of the notable preprocessing steps we performed was converting the dataset's original 4-class system
+									One of the notable preprocessing steps we performed was converting the dataset's original four-class system
 									to a simpler binary tumour segmentation. In this new system, each pixel is either classified as part of the
 									tumour or not in the model's prediction. This approach was chosen because the complexities involved in multi-class
 									tumour segmentation were outside the scope of this project due to the medical nuances. By simplifying the classification,
@@ -97,9 +102,28 @@
 									Additionally, we applied Optuna hyperparameter tuning to optimize the number of epochs, samples per epoch, and
 									other parameters, alongside an exponentially decaying learning rate schedule.
 									Our training allowed us to expose SAM to the intricacies of the brain MRIs and the complexity of the tumours,
-									ultimately improving the accuracy to <strong>87.7%</strong> — a notable increase of <strong>3.6%</strong> from our Vanilla SAM.</p>
+									ultimately improving the accuracy to <strong>87.7%</strong> — a notable increase of <strong>3.6%</strong> from our Vanilla SAM.
+									Our PEFT-SAM training is visualised in the graph below, followed by some animations that show the progression
+									from Vanilla SAM to our PEFT-SAM:</p>
 
-								<p>PEFT-SAM builds upon the strong foundation laid by Vanilla SAM, focusing on the key challenge of tumour segmentation and refining
+								<img style="display: block; margin: auto; margin-bottom: 60px; width: 85%;" src="images/PEFT/peft_training.png" alt="PEFT-SAM Training Progress"/>
+
+								<div class="box alt" style="display: block; margin: auto; width: 90%">
+									<div class="row gtr-50 gtr-uniform">
+										<div class="col-4"><span class="image fit"><img src="images/PEFT/BraTS-MEN-01275-000.gif" alt=""></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/PEFT/BraTS-MEN-01278-000.gif" alt=""></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/PEFT/BraTS-MEN-01292-000.gif" alt=""></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/PEFT/BraTS-MEN-01307-000.gif" alt=""></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/PEFT/BraTS-MEN-01312-000.gif" alt=""></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/PEFT/BraTS-MEN-01327-000.gif" alt=""></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/PEFT/BraTS-MEN-01333-000.gif" alt=""></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/PEFT/BraTS-MEN-01350-000.gif" alt=""></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/PEFT/BraTS-MEN-01417-000.gif" alt=""></span></div>
+									</div>
+								</div>
+
+								<p style="margin-top: 60px">
+									PEFT-SAM builds upon the strong foundation laid by Vanilla SAM, focusing on the key challenge of tumour segmentation and refining
 									the model's interaction with prompts. This approach provided a flexible yet precise method, setting the stage for more complex architectural
 									modifications with our proposed models, <strong>U-SAM</strong> and <strong>LoRA</strong>. PEFT-SAM, along with Vanilla SAM, will serve as the baseline for comparison
 									against these modified models.</p>
@@ -111,13 +135,13 @@
 						<div class="features-row">
 							<section>
 								<span class="icon solid major fa-cloud accent4"></span>
-								<h3>&#10023; U-SAM &#10023;</h3>
+								<h3>&#10023; <strong>U-SAM</strong> &#10023;</h3>
 								<p>A hybrid model that integrates SAM with U-Net's superior 3D spatial capabilities for improved tumour boundary precision.</p>
 								<a href="u-sam.html" class="button primary">Learn More</a>
 							</section>
 							<section>
 								<span class="icon solid major fa-lock accent5"></span>
-								<h3>&#10023; SAM-LoRA &#10023;</h3>
+								<h3>&#10023; <strong>SAM-LoRA</strong> &#10023;</h3>
 								<p>An investigation on applying LoRA to SAM's image encoder affects segmentation accuracy.</p>
 								<a href="lora.html" class="button primary">Learn More</a>
 							</section>
