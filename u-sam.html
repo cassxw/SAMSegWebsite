@@ -36,12 +36,13 @@
 
 			<!-- Main -->
 				<section id="banner" style="background-image: none; background-color: white; padding: 0; color: #444">
+					<br>
 					<img style="display: block; margin: auto; width: 25%;" src="images/decoration/3d-brain.gif" alt="3D Brain Animation"/>
 
 					<h2 style="margin-bottom: 10px">&#129504; <strong>U-SAM for Brain MRI</strong> &#129504;</h2>
 					<h3 style="margin-bottom: 20px; color: #444">A Hybrid Approach for Intracranial Meningioma <br>Segmentation with SAM and U-Net</h3>
 					
-					<p><i>By Cassandra Wallace</i><br><a href="#introduction" class="button primary icon solid fa-chevron-circle-down" style="padding: 0 10px; margin-top: 10px"></a></p>
+					<p><i>By Cassandra Wallace</i><br><br><br><br></p>
 				</section>
 
 				<section id="main" class="container">
@@ -122,7 +123,8 @@
 							These results demonstrate U-Net's ability to adapt to the complexities of medical imaging data, especially in handling 3D MRI volumes. The model
 							was particularly effective in accurately delineating tumour boundaries in certain MRI modalities, but some difficulties arose in distinguishing
 							the less visible tumour regions. As part of future work, incorporating more diverse and augmented datasets could further enhance U-Net's generalisation
-							across various imaging conditions.</p>
+							across various imaging conditions. The graph below shows the progression of our U-Net training across 150 epochs, illustrating the relationship between Training Loss (blue line),
+							Validation Loss (orange bars), and Validation Dice (green markers), which is the performance on the Validation Set:</p>
 
 						<img style="display: block; margin: auto; margin-bottom: 30px; width: 85%;" src="images/U-SAM/unet_training.png" alt="U-Net Training Progress"/>
 						
@@ -186,7 +188,13 @@
 							</table>
 						</div>
 
-						<p>Below is a comparative table of the DSC scores achieved by the different models and strategies employed during the project. The table also includes the percentage improvement or decline in accuracy compared to PEFT-SAM and Vanilla SAM, which serve as the primary baselines for this study.</p>
+						<p>
+							Below is a grid of sample predictions comparing different models' performance on the slice with the largest cross-sectional area of the tumour. 
+							Green highlights the true positives, red represents the false positives, and blue denotes the false negatives. 
+							While still not near-perfect, the U-SAM-Combo approaches (especially Union and Weighted) provide the most visually accurate results. 
+							In contrast, the U1-SAM2 combination suffers from spurious pixel predictions in some samples. The following predictions are shown: 
+							U-Net, PEFT-SAM, U-SAM-Combo (Union), U-SAM-Combo (Intersection), U-SAM-Combo (Weighted), U1-SAM2, and the Ground Truth.
+						</p>
 
 						<img style="display: block; margin: auto; width: 85%; min-width: 500px" src="images/U-SAM/combos-visuals.png" alt="U-SAM-Combo and U1-SAM2 Visuals">
 
@@ -207,9 +215,9 @@
 						<div class="documentation-box">
 							<h2>&#8681; <strong>U-SAM Documentation</strong> &#8681;</h2>
 							<ul>
-								<li><a href="deliverables/SAMSeg - Literature Review - WLLCAS004.pdf" target="_blank" class="button icon solid fa-download">Literature Review</a></li>
+								<li><a href="deliverables/SAMSeg - Literature Review - WLLCAS004.pdf" target="_blank" class="button primary icon solid fa-download">Literature Review</a></li>
 								<li><a href="deliverables/SAMSeg - U-SAM Final Paper - WLLCAS004.pdf" target="_blank" class="button primary icon solid fa-download">Final Paper</a></li>
-								<li><a href="deliverables/SAMSeg - U-SAM Code - WLLCAS004.zip" target="_blank" class="button icon solid fa-download">Code</a></li>
+								<li><a href="deliverables/SAMSeg - U-SAM Code - WLLCAS004.zip" target="_blank" class="button primary icon solid fa-download">Code</a></li>
 							</ul>
 						</div>
 					</div>

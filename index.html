@@ -19,7 +19,7 @@
 
 			<!-- Header -->
 				<header id="header" class="alt">
-					<h1><a href="index.html">&#129504; SAMSeg</a> Honour's Research Project</h1>
+					<h1><a class="icon solid fa-brain" href="index.html">&#129504; SAMSeg</a> Honour's Research Project</h1>
 					<nav id="nav">
 						<ul>
 							<li><a href="index.html" class="button icon solid fa-home">Home</a></li>
@@ -105,12 +105,11 @@
 									Our training allowed us to expose SAM to the intricacies of the brain MRIs and the complexity of the tumours,
 									ultimately improving the accuracy to <strong>87.7%</strong> — a notable increase of <strong>3.6%</strong> from our Vanilla SAM.
 									The graph below shows the progression of our PEFT-SAM training across 125 epochs, illustrating the relationship between Training Loss (blue line),
-									Our PEFT-SAM training is visualised in the graph below, followed by some animations that show the progression
 									Validation Loss (orange bars), and Validation Dice (green markers), which is the performance on the Validation Set:</p>
 
 								<img style="display: block; margin: auto; margin-bottom: 30px; width: 100%; max-width: 750px; height: auto;" src="images/PEFT/peft_training.png" alt="PEFT-SAM Training Progress"/>
 
-								<p>The below grid visualises the progression from Vanilla SAM to our best version of PEFT-SAM across nine sample cases.
+								<p>The below grid visualises the progression from Vanilla SAM to our best version of PEFT-SAM across six sample cases.
 									Each animation represents the axial slice with the largest cross-sectional area of the tumour, highlighting how our training has
 									impacted SAM's predictions. Green indicates true positives, red marks false positives, and blue shows false negatives.
 									While further fine-tuning of PEFT-SAM could have continued to reduce false negatives and false positives, our focus shifted
@@ -145,7 +144,7 @@
 									</div>
 								</div>
 
-								<p style="margin-top: 30px">
+								<p style="margin-top: 30px; margin-bottom: 0px">
 									PEFT-SAM builds upon the strong foundation laid by Vanilla SAM, focusing on the key challenge of tumour segmentation and refining
 									the model's interaction with prompts. This approach provided a flexible yet precise method, setting the stage for more complex architectural
 									modifications with our proposed models, <strong>U-SAM</strong> and <strong>LoRA</strong>. PEFT-SAM, along with Vanilla SAM, will serve as the baseline for comparison
@@ -174,7 +173,7 @@
 						</div>
 					</section>
 
-					<div class="parallax"></div>
+					<!-- <div class="parallax"></div> -->
 
 					<section class="box special features"  style="margin: 0">
 						<div class="features-row">
@@ -193,9 +192,9 @@
 										<p><strong>U-SAM</strong></p>
 										<p><i>Cassandra Wallace</i></p>
 										<ul class="del dropotron">
-											<li><a target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - Literature Review - WLLCAS004.pdf ">Literature Review</a></li>
-											<li><a target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - U-SAM Final Paper - WLLCAS004.pdf">Project Paper</a></li>
-											<li><a target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - U-SAM Code - WLLCAS004.zip">Code</a></li>
+											<li><a style="padding: 0px 15px" target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - Literature Review - WLLCAS004.pdf ">Literature Review</a></li>
+											<li><a style="padding: 0px 15px" target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - U-SAM Final Paper - WLLCAS004.pdf">Project Paper</a></li>
+											<li><a style="padding: 0px 15px" target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - U-SAM Code - WLLCAS004.zip">Code</a></li>
 										</ul>
 									</li>
 
@@ -203,10 +202,9 @@
 										<p><strong>SAM-LoRA</strong></p>
 										<p><i>Tapera Chikumbu</i></p>
 										<ul class="del dropotron">
-											<li><a target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - Literature Review - CHKTAP011.pdf">Literature Review</a></li>
-											<li><a target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - SAMSeg-LoRA Final Paper - CHKTAP011.pdf">Project Paper</a></li>
-											<li><a target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - SAMSEG-LoRA Code - CHKTAP011.zip">Code</a></li>
-											
+											<li><a style="padding: 0px 15px" target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - Literature Review - CHKTAP011.pdf">Literature Review</a></li>
+											<li><a style="padding: 0px 15px" target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - SAMSeg-LoRA Final Paper - CHKTAP011.pdf">Project Paper</a></li>
+											<li><a style="padding: 0px 15px" target="_blank" class="button primary icon solid fa-download" href="deliverables/SAMSeg - SAMSEG-LoRA Code - CHKTAP011.zip">Code</a></li>
 										</ul>
 									</li>
 								</ul>
