@@ -3183,12 +3183,12 @@
 
 	#banner {
 		background-attachment: scroll,							fixed;
-		background-color: #666;
-		background-image: url("images/overlay.png"), url("../../images/banner.jpg");
+		background-color: #666666;
+		background-image: url("images/overlay.png"), url("../../images/decoration/banner.jpg"); /*../../images/banner.jpg");*/
 		background-position: top left,						center center;
 		background-repeat: repeat,							no-repeat;
 		background-size: auto,							cover;
-		color: #fff;
+		color: #ffffff;
 		padding: 12em 0 20em 0;
 		text-align: center;
 	}
@@ -4027,18 +4027,15 @@
 
 /* Parallax section */
 .parallax {
-	/* The image used */
-	background-image: url('../../images/decoration/decoration2.jpeg');
-  
 	/* Full height */
-	height: 250px; 
+	height: 100px;
 	width: 100%;
   
 	/* Create the parallax scrolling effect */
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: auto;
+	background-size: cover;
   }
 
 div#page-wrapper {
