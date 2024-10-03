@@ -120,11 +120,21 @@
 					</table>
 				</div>
 				<div class="box">
-					<h2><strong>&#10148; Conclusion</strong></h2>
+					<h2><strong>&#10148; Conclusions and Future Work</strong></h2>
 					<p>
 						The study demonstrates that SAM modified with LoRA adapters can be trained for improved performance on tumor segmentation.
 						However, reliable performance comparisons between the original SAM and LoRA-modified versions could not be established.
 						Further experimentation with different adapter ranks and finer hyper-parameter tuning is needed to shed more light on the effectiveness of this approach for medical image segmentation.
+					</p>
+					<p>
+						For future work, we recommend further exploring different adapter configurations.
+						Rather than adding adapters to the image encoder, adding them to the decoder or other parts of the model could yield better results.
+						Related to this, the addition of adapters to fewer blocks of the image encoder could be explored.
+					</p>
+					<p>
+						Another area of interest is the level of freezing applied to pre-trained weights.
+						The introduced adapters could be trained trained alongside the mask decoder to better adapt to the task.
+						Investigating the impact of different pre-processing techniques and data augmentation strategies on model performance is also recommended.
 					</p>
 				</div>
 
