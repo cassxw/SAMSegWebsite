@@ -27,7 +27,7 @@
 							<a href="#" class="icon solid fa-angle-down button">Projects</a>
 							<ul>
 								<li><a href="u-sam.html">U-SAM</a></li>
-								<li><a href="lora.html">LoRA</a></li>
+								<li><a href="lora.html">SAM-LoRA</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -35,18 +35,21 @@
 			</header>
 
 			<!-- Main -->
+			<section id="banner" style="background-image: none; background-color: white; padding: 0; color: #444">
+				<br>
+				<h2 style="margin-bottom: 10px"><strong>&#129504; SAMSeg-LoRA &#129504;</strong></h2>
+				<h3 style="margin-bottom: 20px; color: #444">Fine Tuning SAM Through Low Rank Adaptation</h3>
+				<p><i>By Tapera Chikumbu</i></p>
+				<br>
+			</section>	
+
 			<section id="main" class="container">
-				<header>
-					<h2><strong>&#129504; SAMSeg-LoRA &#129504;</strong></h2>
-					<h3>Fine Tuning SAM Through Low Rank Adaptation</h3>
-					<p><i>By Tapera Chikumbu</i></p>
-				</header>
 				<div class="box">
 					<h2><strong>&#10148; Introduction</strong></h2>
 					<p>
 						This research aimed to investigate how implementing Low-Rank Adaptation (LoRA) alters the performance of SAM on segmentation of intracranial meningiomas in brain MRIs, compared to the baseline SAM performance.
 						LoRA adds trainable layers parallel to existing model parameters, potentially enhancing performance without increasing inference latency.
-						Our modified SAM that implements LoRA was dubbed <i>SAMSEG-LoRA</i>. 
+						Our modified SAM that implements LoRA was dubbed <i>SAM-LoRA</i>. 
 						Such an approach was particularly significant as it offered a way to adapt large, pre-trained models like SAM to specialized tasks without the computational cost of full fine-tuning.
 					</p>
 				</div>
@@ -142,7 +145,7 @@
 					<div class="documentation-box">
 						<h2>&#8681; <strong>SAMSeg-LoRA Documentation</strong> &#8681;</h2>
 						<ul>
-							<li><a href="deliverables/SAMSeg - Literature Review - CHKTAP011.pdf" target="_blank" class="button icon solid fa-download">Literature Review</a></li>
+							<li><a href="deliverables/SAMSeg - Literature Review - CHKTAP011.pdf" target="_blank" class="button primary icon solid fa-download">Literature Review</a></li>
 							<li><a href="deliverables/SAMSeg - SAMSEG-LoRA Final Paper - CHKTAP011.pdf" target="_blank" class="button primary icon solid fa-download">Final Paper</a></li>
 							<li><a href="deliverables/SAMSeg - SAMSEG-LoRA Code - CHKTAP011.zip" target="_blank" class="button primary icon solid fa-download">Code</a></li>
 						</ul>
