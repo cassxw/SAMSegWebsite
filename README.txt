@@ -6,8 +6,8 @@ A simple, clean, and minimal website for the **SAMSeg** project, built using the
 
 This website uses the **Alpha** template by HTML5 UP:
 
-**Template by**: [HTML5 UP](https://html5up.net) | **@ajlkn**
-**Free for personal and commercial use** under the CCA 3.0 license (html5up.net/license)
+- **Template by**: [HTML5 UP](https://html5up.net) | **@ajlkn**
+- **Free for personal and commercial use** under the [CCA 3.0 license](https://html5up.net/license)
 
 ### Demo Images
 
@@ -15,13 +15,13 @@ The demo images used in the template are provided courtesy of [Unsplash](https:/
 
 ### Icons
 
-**Font Awesome**: [fontawesome.io](https://fontawesome.io)
+- **Font Awesome**: [fontawesome.io](https://fontawesome.io)
 
 ### Other Libraries Used
 
-**jQuery**: [jquery.com](https://jquery.com)
-**Scrollex**: [github.com/ajlkn/jquery.scrollex](https://github.com/ajlkn/jquery.scrollex)
-**Responsive Tools**: [github.com/ajlkn/responsive-tools](https://github.com/ajlkn/responsive-tools)
+- **jQuery**: [jquery.com](https://jquery.com)
+- **Scrollex**: [github.com/ajlkn/jquery.scrollex](https://github.com/ajlkn/jquery.scrollex)
+- **Responsive Tools**: [github.com/ajlkn/responsive-tools](https://github.com/ajlkn/responsive-tools)
 
 ---
 
